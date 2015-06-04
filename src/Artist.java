@@ -9,11 +9,18 @@ public class Artist {
     public Artist(String name) {
         songs = new ArrayList<>();
         this.name = name;
-        System.out.println("Artist: " + name);
     }
 
     public Artist addSong(Song song) {
         songs.add(song);
         return this;
+    }
+
+    public Collection<Song> getSongs() {
+        return songs;
+    }
+
+    public String getName() {
+        return name;
     }
 }

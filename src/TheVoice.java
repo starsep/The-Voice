@@ -52,5 +52,6 @@ public class TheVoice {
     public static void main(String[] args) throws Exception {
         voice = new Voice();
         parseArgs(args);
+        voice.process();
     }
 }
