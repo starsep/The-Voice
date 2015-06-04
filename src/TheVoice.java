@@ -23,6 +23,27 @@ public class TheVoice {
                     voice.addFilter(FilterFactory.getFilter(filter));
             }
         }
+        
+        //ZAŁOŻENIE: jeżeli nazwa artysty jest jednowyrazowa to nie jest w cudzysłowie
+        StringBuilder artist_name = new StringBuilder();
+        boolean artistWithSpaces = false;
+        for (int i = 0; i < args.length; i++) {
+            String arg = args[i];
+            if (!arg.contains("--")) {
+                if (arg.charAt(0) == '“') {
+                    artistWithSpaces = true;
+                    artist_name.append(arg.substring(1) + " ");
+                } else if (arg.charAt(arg.length() - 1) == '”') {
+                    artistWithSpaces = false;
+                    artist_name.append(arg.substring(0, arg.length() - 1));
+                    voice.addArtist(new Artist(artist_name.toString()));
+                    artist_name.setLength(0);
+                } else if (artistWithSpaces)
+                    artist_name.append(arg + " ");
+                else //if(!artistWithSpaces)
+                    voice.addArtist(new Artist(arg));
+            }
+        }
         voice.setTextProcessor(textProcessor);
     }
 

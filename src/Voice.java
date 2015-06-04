@@ -8,9 +8,12 @@ public class Voice {
 
     private Collection<Filter> filters;
 
+    private Collection<Artist> artists;
+
     public Voice() {
         processors = new ArrayList<>();
         filters = new ArrayList<>();
+        artists = new ArrayList<>();
     }
 
     public Voice setTextProcessor(TextProcessor textProcessor) {
@@ -25,6 +28,11 @@ public class Voice {
 
     public Voice addFilter(Filter filter) {
         filters.add(filter);
+        return this;
+    }
+
+    public Voice addArtist(Artist artist) {
+        artists.add(artist);
         return this;
     }
 }
