@@ -21,7 +21,7 @@ public class FileTextProcessor extends TextProcessor {
         File artistDirectory = new File(source + "/" + artistName);
         File[] list = artistDirectory.listFiles();
         for (File file : list)
-            if(file.getName().endsWith(".txt") && !file.isDirectory())
-                artist.addSong(processSong(source + "/"  + artistName + "/" + file.getName()));
+            if (file.getName().endsWith(".txt") && !file.isDirectory())
+                artist.addSong(processSong(source + "/" + artistName + "/" + file.getName()));
     }
 }

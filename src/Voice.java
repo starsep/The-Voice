@@ -39,11 +39,11 @@ public class Voice {
     public Voice process() throws Exception {
         for (Artist artist : artists)
             textProcessor.giveArtistSongs(artist);
-        for(Filter filter : filters)
-            for(Artist artist : artists)
-                for(Song song : artist.getSongs())
+        for (Filter filter : filters)
+            for (Artist artist : artists)
+                for (Song song : artist.getSongs())
                     filter.filter(song.getLyrics());
-        for(Processor processor : processors)
+        for (Processor processor : processors)
             processor.process(artists);
         return this;
     }

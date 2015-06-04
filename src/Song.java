@@ -13,17 +13,17 @@ public class Song {
         return this;
     }
 
-    private void addGoodWord(String word){
+    private void addGoodWord(String word) {
         lyrics.add(word.toLowerCase());
     }
 
-    private Song addWords(String[] words){
-        for(String word : words)
+    private Song addWords(String[] words) {
+        for (String word : words)
             addGoodWord(word.toLowerCase());
         return this;
     }
 
-    public Collection<String> getLyrics(){
+    public Collection<String> getLyrics() {
         return lyrics;
     }
 }

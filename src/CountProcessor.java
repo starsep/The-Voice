@@ -9,7 +9,7 @@ public class CountProcessor extends Processor {
 
     private int count(Artist artist) {
         Set<String> words = new HashSet<>();
-        for(Song song : artist.getSongs())
+        for (Song song : artist.getSongs())
             words.addAll(song.getLyrics());
         return words.size();
     }
