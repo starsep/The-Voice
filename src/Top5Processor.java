@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Top5Processor extends Processor {
+public class Top5Processor extends Processor implements Runnable {
     Top5Processor(String processorName) {
         super(processorName);
     }
@@ -22,22 +22,26 @@ public class Top5Processor extends Processor {
         Collections.reverse(entries);
         while (entries.size() > 5)
             entries.remove(entries.remove(entries.size() - 1));
-        System.out.print("[");
+        output.append("[");
         for (Map.Entry<String, Integer> entry : entries) {
-            System.out.print(entry.getKey() + "=" + entry.getValue());
+            output.append(entry.getKey());
+            output.append("=");
+            output.append(entry.getValue());
             if (!entry.equals(entries.get(entries.size() - 1)))
-                System.out.print(", ");
+                output.append(", ");
         }
-        System.out.println("]");
+        output.append("]\n");
     }
 
     @Override
-    public void process(Collection<Artist> artists) {
-        System.out.println(processorName + ":");
+    public void run() {
+        output.append(processorName);
+        output.append(":\n");
         for (Artist artist : artists) {
-            System.out.println(artist.getName());
+            output.append(artist.getName());
+            output.append(":\n");
             top5(artist);
         }
-        System.out.println("***");
+        output.append("***\n");
     }
 }

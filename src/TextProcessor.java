@@ -8,8 +8,6 @@ public abstract class TextProcessor {
         return this;
     }
 
-    protected abstract Song processSong(String songSource) throws Exception;
-
     protected abstract String parseArtistName(String artistName);
 
     protected abstract void processArtist(Artist artist, String artistName) throws Exception;

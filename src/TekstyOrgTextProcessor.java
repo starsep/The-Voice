@@ -3,9 +3,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 public class TekstyOrgTextProcessor extends TextProcessor {
-    @Override
     protected Song processSong(String songSource) {
-        System.err.println(songSource);
+        //System.err.println(songSource);
         Document document;
         try {
             document = Jsoup.connect(songSource).get();

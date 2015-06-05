@@ -1,5 +1,4 @@
 public class AZLyricsComTextProcessor extends TextProcessor {
-    @Override
     protected Song processSong(String songSource) {
         // todo
         return null;

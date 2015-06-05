@@ -2,7 +2,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CountProcessor extends Processor {
+public class CountProcessor extends Processor implements Runnable {
     CountProcessor(String processorName) {
         super(processorName);
     }
@@ -15,10 +15,15 @@ public class CountProcessor extends Processor {
     }
 
     @Override
-    public void process(Collection<Artist> artists) {
-        System.out.println(processorName + ":");
-        for (Artist artist : artists)
-            System.out.println(artist.getName() + " " + count(artist));
-        System.out.println("***");
+    public void run() {
+        output.append(processorName);
+        output.append(":\n");
+        for (Artist artist : artists) {
+            output.append(artist.getName());
+            output.append(" ");
+            output.append(count(artist));
+            output.append("\n");
+        }
+        output.append("***\n");
     }
 }
