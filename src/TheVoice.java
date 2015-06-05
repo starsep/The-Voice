@@ -5,9 +5,13 @@ public class TheVoice {
 
     public static void parseArgs(String[] args) throws Exception {
         TextProcessor textProcessor = null;
+        boolean multithread = false;
+        for(String arg : args)
+            if(arg.contains("--multithread"))
+                multithread = true;
         for (String arg : args)
             if (arg.contains("--source-type="))
-                textProcessor = TextProcessorFactory.getTextSource(arg.split("--source-type=")[1]);
+                textProcessor = TextProcessorFactory.getTextSource(arg.split("--source-type=")[1], multithread);
         if (textProcessor == null)
             throw new Exception("Nie podany typ żródła");
         StringBuilder artist_name = new StringBuilder();
