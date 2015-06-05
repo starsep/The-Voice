@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 public abstract class TextProcessor {
     protected String source;
 

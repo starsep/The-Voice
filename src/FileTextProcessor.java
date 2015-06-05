@@ -1,6 +1,6 @@
 import java.io.File;
-        import java.nio.charset.StandardCharsets;
-        import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 public class FileTextProcessor extends TextProcessor {
     protected Song processSong(String songSource) throws Exception {

@@ -12,8 +12,8 @@ public class TheVoice {
     public static void parseArgs(String[] args) throws Exception {
         TextProcessor textProcessor = null;
         boolean multithreaded = false;
-        for(String arg : args)
-            if(arg.contains("--multithreaded"))
+        for (String arg : args)
+            if (arg.contains("--multithreaded"))
                 multithreaded = true;
         for (String arg : args)
             if (arg.contains("--source-type="))
@@ -55,7 +55,6 @@ public class TheVoice {
                     voice.addArtist(new Artist(arg));
             }
         }
-
         voice.setTextProcessor(textProcessor);
     }
 

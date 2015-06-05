@@ -4,7 +4,6 @@ import org.jsoup.nodes.Element;
 
 public class TekstyOrgTextProcessor extends TextProcessor {
     protected Song processSong(String songSource) {
-        //System.err.println(songSource);
         Document document;
         try {
             document = Jsoup.connect(songSource).get();
@@ -21,7 +20,6 @@ public class TekstyOrgTextProcessor extends TextProcessor {
     }
 
     private void processPage(Artist artist, String url) {
-        //System.err.println(url);
         Document document;
         try {
             document = Jsoup.connect(url).get();

@@ -14,11 +14,11 @@ public abstract class Processor implements Runnable {
 
     public abstract void run();
 
-    public void addArtists(Collection<Artist> artists){
+    public void addArtists(Collection<Artist> artists) {
         this.artists.addAll(artists);
     }
 
-    public String output(){
+    public String output() {
         String result = output.toString();
         output.setLength(0);
         return result;
