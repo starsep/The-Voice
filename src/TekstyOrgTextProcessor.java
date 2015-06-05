@@ -22,7 +22,7 @@ public class TekstyOrgTextProcessor extends TextProcessor {
     }
 
     private void processPage(Artist artist, String url) {
-        System.err.println(url);
+        //System.err.println(url);
         Document document;
         try {
             document = Jsoup.connect(url).get();
@@ -34,9 +34,9 @@ public class TekstyOrgTextProcessor extends TextProcessor {
             String nextUrl = source + document.select("a.next-site").get(0).attr("href");
             processPage(artist, nextUrl);
         }
-        for(Element element : document.select("a.artist")){
+        for (Element element : document.select("a.artist")) {
             String songUrl = element.attr("href");
-            if(songUrl.endsWith(",tekst-piosenki"))
+            if (songUrl.endsWith(",tekst-piosenki"))
                 artist.addSong(processSong(songUrl));
         }
     }
