@@ -1,8 +1,8 @@
 public abstract class TextProcessorFactory {
-    public static TextProcessor getTextSource(String source, boolean multithread) throws Exception {
+    public static TextProcessor getTextSource(String source, boolean multithreaded) throws Exception {
         switch (source) {
             case "file":
-                return multithread ? new FileTextMultiProcessor() : new FileTextProcessor();
+                return multithreaded ? new FileTextMultiProcessor() : new FileTextProcessor();
             case "teksty.org":
                 return new TekstyOrgTextProcessor();
             case "azlyrics.com":

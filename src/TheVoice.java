@@ -1,3 +1,9 @@
+/**
+ * Wprowadziłem dodatkową opcję (--multithreaded), który włącza wielowątkowe wczytywanie plików z piosenkami.
+ * Jest ona opcjonalna, bo na moim procesorze 4 rdzeniowym (8 wątków) i dysku ssd zyski są znikome.
+ * Być może na niektórych dyskach/procesorach będą nawet straty.
+ */
+
 import java.io.File;
 
 public class TheVoice {
@@ -5,13 +11,13 @@ public class TheVoice {
 
     public static void parseArgs(String[] args) throws Exception {
         TextProcessor textProcessor = null;
-        boolean multithread = false;
+        boolean multithreaded = false;
         for(String arg : args)
-            if(arg.contains("--multithread"))
-                multithread = true;
+            if(arg.contains("--multithreaded"))
+                multithreaded = true;
         for (String arg : args)
             if (arg.contains("--source-type="))
-                textProcessor = TextProcessorFactory.getTextSource(arg.split("--source-type=")[1], multithread);
+                textProcessor = TextProcessorFactory.getTextSource(arg.split("--source-type=")[1], multithreaded);
         if (textProcessor == null)
             throw new Exception("Nie podany typ żródła");
         StringBuilder artist_name = new StringBuilder();
