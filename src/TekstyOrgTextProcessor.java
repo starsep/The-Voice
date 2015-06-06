@@ -24,7 +24,7 @@ public class TekstyOrgTextProcessor extends TextProcessor {
         try {
             document = Jsoup.connect(url).get();
         } catch (Exception e) {
-            System.err.println("Nie udało się pobrać strony" + url);
+            System.err.println("Nie udało się pobrać strony " + url);
             return;
         }
         if (document.select("a.next-site").size() > 0) {
