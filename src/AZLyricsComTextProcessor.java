@@ -12,17 +12,15 @@ public class AZLyricsComTextProcessor extends TextProcessor {
         System.out.println(songSource);
         try {
             document = Jsoup.connect(songSource).userAgent(userAgent).get();
-            sleep(1000);
+            sleep(2000);
         } catch (Exception e) {
             System.err.println("Nie udało się pobrać strony " + songSource);
             return new Song();
         }
         boolean ringtone = false;
         for (Element e : document.select("div")) {
-            if (ringtone) {
-                System.err.println(e.text());
+            if (ringtone)
                 return new Song().addWord(e.text());
-            }
             if (e.hasClass("ringtone"))
                 ringtone = true;
         }
@@ -39,7 +37,9 @@ public class AZLyricsComTextProcessor extends TextProcessor {
         return stringBuilder.toString();
     }
 
-    private void processPage(Artist artist, String url) {
+    @Override
+    protected void processArtist(Artist artist, String artistName) {
+        String url = source + "/" + artistName.charAt(0) + "/" + artistName + ".html";
         Document document;
         try {
             document = Jsoup.connect(url).get();
@@ -49,13 +49,7 @@ public class AZLyricsComTextProcessor extends TextProcessor {
         }
         for (Element e : document.select("a[href^=\"../lyrics\"")) {
             String songUrl = source + e.attr("href").substring(2);
-            processSong(songUrl);
+            artist.addSong(processSong(songUrl));
         }
-    }
-
-    @Override
-    protected void processArtist(Artist artist, String artistName) {
-        String url = source + "/" + artistName.charAt(0) + "/" + artistName + ".html";
-        processPage(artist, url);
     }
 }
