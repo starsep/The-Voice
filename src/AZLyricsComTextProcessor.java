@@ -9,10 +9,10 @@ public class AZLyricsComTextProcessor extends TextProcessor {
 
     protected Song processSong(String songSource) {
         Document document;
-        System.out.println(songSource);
+        //System.out.println(songSource);
         try {
             document = Jsoup.connect(songSource).userAgent(userAgent).get();
-            sleep(2000);
+            //sleep(2000);
         } catch (Exception e) {
             System.err.println("Nie udało się pobrać strony " + songSource);
             return new Song();
