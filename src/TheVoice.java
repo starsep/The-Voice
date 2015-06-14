@@ -51,7 +51,9 @@ public class TheVoice {
                 } else if (artistWithSpaces) {
                     artist_name.append(arg);
                     artist_name.append(" ");
-                } else //if(!artistWithSpaces)
+                } else if(arg.contains("\""))
+                    voice.addArtist(new Artist(arg.split("\"")[1]));
+                else
                     voice.addArtist(new Artist(arg));
             }
         }
